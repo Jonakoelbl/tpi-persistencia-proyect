@@ -9,7 +9,9 @@ public class Usuario {
 	private String email;
 	private String password;
 	private Date fechaDeNac;
+	private Boolean estaValidado;
 	
+
 	public Usuario(String username, String password, String nombre, String apellido, String email, Date fechaNac) {
 		this.username = username;
 		this.password = password;
@@ -39,5 +41,7 @@ public class Usuario {
 		return fechaDeNac;
 	}
 	
-	
+	public Boolean getEstaValidado() {
+		return estaValidado;
+	}
 }
