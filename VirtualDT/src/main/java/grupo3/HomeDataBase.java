@@ -25,8 +25,7 @@ public class HomeDataBase implements Home {
 				statement.setString(3, usuarioNuevo.getUsername());
 				statement.setString(4, usuarioNuevo.getPassword());
 				statement.setString(5, usuarioNuevo.getEmail());
-				statement.setDate(6, usuarioNuevo.getFechaDeNac());
-				
+				statement.setDate(6, new java.sql.Date(usuarioNuevo.getFechaDeNac().getTime()));
 				statement.executeUpdate();
 	
 				return null;
