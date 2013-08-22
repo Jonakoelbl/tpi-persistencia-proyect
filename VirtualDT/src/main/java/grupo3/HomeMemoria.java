@@ -22,9 +22,9 @@ public class HomeMemoria implements Home{
 		this.usuariosRegistrados.add(usuarioNuevo);
 	}
 
-	public void validarCuenta(String codigoValidación)
+	public void validarCuenta(String codigoValidacion)
 			throws ValidaciónException {
-		//TODO generar validacion
+		//TODO implemetar validarCuenta en memoria....
 	}
 
 	public Usuario ingresarUsuario(String userName, String password)
@@ -38,6 +38,12 @@ public class HomeMemoria implements Home{
 
 	public void cambiarPassword(String userName, String password,
 			String nuevaPassword) throws NuevaPasswordInvalida {
-		
+		Usuario usuarioActual;
+		for (Usuario usuario : this.usuariosRegistrados) {
+			if(usuario.getUsername().equals(userName)){
+				usuarioActual = usuario;
+			}
+		}
+		//TODO terminar de implementar....
 	}
 }
