@@ -19,6 +19,7 @@ public class Usuario {
 		this.apellido = apellido;
 		this.email = email;
 		this.fechaDeNac = fechaNac;
+		this.estaValidado = false;
 	}
 	
 	public String getPassword() {
