@@ -6,7 +6,6 @@ import java.util.Vector;
 import grupo3.exception.NuevaPasswordInvalida;
 import grupo3.exception.UsuarioNoExiste;
 import grupo3.exception.UsuarioYaExisteException;
-import grupo3.exception.ValidaciónException;
 
 public class HomeMemoria implements Home{
 
@@ -18,13 +17,19 @@ public class HomeMemoria implements Home{
 			if(usuario.getUsername() == usuarioNuevo.getUsername())
 				throw new UsuarioYaExisteException();
 		}
-		
 		this.usuariosRegistrados.add(usuarioNuevo);
 	}
+	
+	public void validarCuenta(String codigoValidación){
+		
+	}
 
-	public void validarCuenta(String codigoValidacion)
-			throws ValidaciónException {
-		//TODO implemetar validarCuenta en memoria....
+	public List<Usuario> getUsuariosRegistrados() {
+		return usuariosRegistrados;
+	}
+
+	public void setUsuariosRegistrados(List<Usuario> usuariosRegistrados) {
+		this.usuariosRegistrados = usuariosRegistrados;
 	}
 
 	public Usuario ingresarUsuario(String userName, String password)
@@ -36,14 +41,20 @@ public class HomeMemoria implements Home{
 		throw new UsuarioNoExiste();
 	}
 
-	public void cambiarPassword(String userName, String password,
-			String nuevaPassword) throws NuevaPasswordInvalida {
-		Usuario usuarioActual;
+	private Usuario getUsuarioByUsername(String userName){
+		Usuario usuarioActual = null;
 		for (Usuario usuario : this.usuariosRegistrados) {
 			if(usuario.getUsername().equals(userName)){
 				usuarioActual = usuario;
 			}
 		}
-		//TODO terminar de implementar....
+		return usuarioActual;
+	}
+	
+	public void cambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInvalida {
+		if(getUsuarioByUsername(userName).getPassword().equals(password) && (password != "")){
+			getUsuarioByUsername(userName).setPassword(nuevaPassword);
+		}
 	}
 }
+
