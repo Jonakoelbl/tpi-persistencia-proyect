@@ -1,5 +1,5 @@
 package grupo3.exception;
 
-public class UsuarioNoExiste extends Exception {
+public class UsuarioNoExiste extends RuntimeException {
 
 }
