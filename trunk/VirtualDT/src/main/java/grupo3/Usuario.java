@@ -45,4 +45,32 @@ public class Usuario {
 	public Boolean getEstaValidado() {
 		return estaValidado;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setFechaDeNac(Date fechaDeNac) {
+		this.fechaDeNac = fechaDeNac;
+	}
+
+	public void setEstaValidado(Boolean estaValidado) {
+		this.estaValidado = estaValidado;
+	}
 }
