@@ -21,7 +21,7 @@ public class HomeMemoria implements Home{
 	}
 	
 	public void validarCuenta(String codigoValidación){
-		
+		//TODO programar la validacion de cuenta de la version memoria...
 	}
 
 	public List<Usuario> getUsuariosRegistrados() {
@@ -38,7 +38,7 @@ public class HomeMemoria implements Home{
 			if(usuario.getNombre().equals(userName) && usuario.getPassword().equals(password))
 				return usuario;
 		}
-		throw new UsuarioNoExiste();
+		throw new UsuarioNoExiste(userName);
 	}
 
 	private Usuario getUsuarioByUsername(String userName){

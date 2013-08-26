@@ -28,22 +28,43 @@ public class HomeDataBase implements Home {
 				statement.setDate(6, new java.sql.Date(usuarioNuevo.getFechaDeNac().getTime()));
 				statement.executeUpdate();
 	
+				//Guardo el codigo de validacion con el nombre de usuario
+				statement = connection.prepareStatement("INSERT INTO validaciones(nombreUsuario, codigo) values (?, ?)");
+				statement.setString(1, usuarioNuevo.getUsername());
+				String codigo = ""; //TODO crear una formar de generar codigo aleatoreo!
+				statement.setString(2, codigo);
+				statement.executeUpdate();
+				
+				//TODO enviar la validacion por email
 				return null;
 			}
 		};
 		this.execute(task);
 	}
 
-	public void validarCuenta(String codigoValidación)
+	public void validarCuenta(final String codigoValidación)
 			throws ValidaciónException {
-		// TODO Auto-generated method stub
-
+		Executor<Void> task = new Executor<Void>() {
+			
+			public Void execute(Connection connection) throws SQLException {
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM validaciones WHERE codigo = ?");
+				statement.setString(1, codigoValidación);
+				
+				ResultSet resultSet = statement.executeQuery();
+				if(resultSet.next()){
+					statement = connection.prepareStatement("DELETE FROM validaciones WHERE codigo = ?");
+					statement.setString(1, codigoValidación);
+					statement.executeQuery();
+				}
+				return null;
+			}
+		};
 	}
 	
 	public Usuario getUsuario(final String userName){
 		Executor<Usuario> task = new Executor<Usuario>() {
 			public Usuario execute(Connection connection) throws SQLException {
-				PreparedStatement statement = connection.prepareStatement("SELECT * from usuarios WHERE nombreUsuario = ? ");
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM usuarios WHERE nombreUsuario = ? ");
 				statement.setString(1, userName);
 				ResultSet resultSet = statement.executeQuery();
 				if(resultSet.next()){
