@@ -1,6 +1,6 @@
-package grupo3;
+package virtualDT.email;
 
-import grupo3.exception.*;
+import virtualDT.exception.*;
 
 public interface EnviadorDeMails {
    public void enviarMail(Mail m) throws EnviarMailException;

@@ -1,14 +1,16 @@
-package grupo3;
+package virtualDT.home;
 
-import grupo3.exception.InvalidPassword;
-import grupo3.exception.NuevaPasswordInvalida;
-import grupo3.exception.UsuarioNoExiste;
-import grupo3.exception.ValidaciónException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import virtualDT.email.Mail;
+import virtualDT.exception.InvalidPassword;
+import virtualDT.exception.NuevaPasswordInvalida;
+import virtualDT.exception.UsuarioNoExiste;
+import virtualDT.exception.ValidaciónException;
 
 import database.connector.DBConnector;
 
@@ -35,7 +37,13 @@ public class HomeDataBase implements Home {
 				statement.setString(2, codigo);
 				statement.executeUpdate();
 				
-				//TODO enviar la validacion por email
+				Mail generarMail = new Mail(usuarioNuevo.getEmail(), "email@admin.com", "[VirutalDT] Verificar su cuenta ", 
+									"Hola "+usuarioNuevo.getNombre()+"."+"/n"+"Con tal de mantener la seguridad de su cuenta VirtualDT, " +
+											"por favor verifiquelo con el siguiente codigo: "+codigo+"/n"+
+											"Equipo de VirtualDT.");
+				
+				generarMail.enviarMail(generarMail); //HORRIBLE!!!!!
+				
 				return null;
 			}
 		};
@@ -59,6 +67,7 @@ public class HomeDataBase implements Home {
 				return null;
 			}
 		};
+		this.execute(task);
 	}
 	
 	public Usuario getUsuario(final String userName){
@@ -76,6 +85,7 @@ public class HomeDataBase implements Home {
 			}
 			
 		};
+		this.execute(task);
 		return null;
 	}
 	
@@ -104,6 +114,7 @@ public class HomeDataBase implements Home {
 				return null;
 			}
 		};
+		this.execute(task);
 	}
 	
 	protected <T> T execute(Executor<T> executor){

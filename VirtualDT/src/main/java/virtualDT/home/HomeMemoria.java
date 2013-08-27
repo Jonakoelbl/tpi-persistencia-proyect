@@ -1,11 +1,12 @@
-package grupo3;
+package virtualDT.home;
 
 import java.util.List;
 import java.util.Vector;
 
-import grupo3.exception.NuevaPasswordInvalida;
-import grupo3.exception.UsuarioNoExiste;
-import grupo3.exception.UsuarioYaExisteException;
+import virtualDT.exception.NuevaPasswordInvalida;
+import virtualDT.exception.UsuarioNoExiste;
+import virtualDT.exception.UsuarioYaExisteException;
+
 
 public class HomeMemoria implements Home{
 
