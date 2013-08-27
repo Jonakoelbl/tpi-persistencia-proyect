@@ -1,4 +1,4 @@
-package grupo3.exception;
+package virtualDT.exception;
 
 public class InvalidPassword extends RuntimeException {
 	public InvalidPassword() {

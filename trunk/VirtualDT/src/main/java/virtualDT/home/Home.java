@@ -1,9 +1,9 @@
-package grupo3;
+package virtualDT.home;
 
-import grupo3.exception.NuevaPasswordInvalida;
-import grupo3.exception.UsuarioNoExiste;
-import grupo3.exception.UsuarioYaExisteException;
-import grupo3.exception.ValidaciónException;
+import virtualDT.exception.NuevaPasswordInvalida;
+import virtualDT.exception.UsuarioNoExiste;
+import virtualDT.exception.UsuarioYaExisteException;
+import virtualDT.exception.ValidaciónException;
 
 public interface Home {
 	public void registrarUsuario (Usuario usuarioNuevo) throws UsuarioYaExisteException;
