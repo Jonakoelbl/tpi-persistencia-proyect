@@ -1,0 +1,6 @@
+package vitualDT.equipo;
+
+public enum Posicion {
+	ARQUERO, LATERAL, DEFENSORCENTRAL, MEDIOCAMPISTA, VOLANTE, CENTRODELANTERO, DELANTERO;
+		
+}
