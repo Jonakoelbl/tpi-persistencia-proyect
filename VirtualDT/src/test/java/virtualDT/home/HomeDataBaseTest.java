@@ -4,10 +4,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import database.connector.DBConnector;
@@ -15,39 +22,42 @@ import database.connector.DBConnector;
 public class HomeDataBaseTest {
 	HomeDataBase home = new HomeDataBase();
 	DBConnector connection;
+	Usuario usuarioDePrueba;
+	
+	@Before
+	public void creacionDeUsuario() throws IOException, SQLException{
+		usuarioDePrueba = new Usuario("CosmeFu", "1234", "Cosme", "Fulanito", "email@email.com", new Date(1989, 06, 23));
+		
+		connection = new DBConnector(); 
+		connection.getConnection().prepareStatement("DELETE FROM usuarios where nombreUsuario != ''").executeUpdate();
+		connection.getConnection().prepareStatement("DELETE FROM validaciones where nombreUsuario != ''").executeUpdate();
+//		String command = "mysql virtualDT -u root --password=root < virtualDT.sql";
+//		Runtime.getRuntime().exec(command);
+	}
 	
 	@Test
 	public void registrarUsuario() throws Exception{
-		Usuario usuarioARegistrar = new Usuario("UserName", "1234", "Pepito", "Sapo", "email@email.com", new Date(1989, 06, 23));
-		home.registrarUsuario(usuarioARegistrar);
+		home.registrarUsuario(usuarioDePrueba);
+		Usuario usuario = home.getUsuario("CosmeFu");
+	
+		assertEquals(usuario, usuarioDePrueba);
 		
 		connection = new DBConnector(); 
-		
-		PreparedStatement statementRegister = connection.getConnection().prepareStatement("SELECT * FROM usuarios WHERE nombreUsuario = ? ");
-		statementRegister.setString(1, "UserName");
-		ResultSet resultRegister = statementRegister.executeQuery();
-		
-		assertEquals(resultRegister.getString("nombre"), "Pepito");
-		assertEquals(resultRegister.getString("apellido"), "Sapo");
-		assertEquals(resultRegister.getString("email"), "email@email.com");
-		assertEquals(resultRegister.getString("password"), "1234");
-		
 		PreparedStatement statementValidation = connection.getConnection().prepareStatement("SELECT * FROM validaciones WHERE nombreUsuario = ?");
-		statementValidation.setString(1, "UserName");
+		statementValidation.setString(1, usuario.getUsername());
 		ResultSet resultValidation = statementValidation.executeQuery();
 		
-		assertEquals(resultValidation.getConcurrency(), 1);
+		assertFalse(!resultValidation.next());
 	}
 
 	@Test
 	public void validarCuenta() throws Exception{
-		Usuario usuarioARegistrar = new Usuario("CosmeFu", "1234", "Cosme", "Fulanito", "email@email.com", new Date(1989, 06, 23));
-		home.registrarUsuario(usuarioARegistrar);
-		
+		home.registrarUsuario(usuarioDePrueba);
 		PreparedStatement statementValidation = connection.getConnection().prepareStatement("SELECT * FROM validaciones WHERE nombreUsuario = ?");
-		statementValidation.setString(1, "CosmeFu");
+		statementValidation.setString(1, usuarioDePrueba.getUsername());
 		ResultSet resultValidation = statementValidation.executeQuery();
-		
+
+		resultValidation.next();
 		String validation = resultValidation.getString("codigo");
 		home.validarCuenta(validation);
 		
@@ -57,6 +67,7 @@ public class HomeDataBaseTest {
 	
 	@Test
 	public void ingresarUsuario() throws Exception{
+		home.registrarUsuario(usuarioDePrueba);
 		Usuario usuario = home.ingresarUsuario("CosmeFu", "1234");
 		
 		assertEquals(usuario.getNombre(), "Cosme");
@@ -67,16 +78,15 @@ public class HomeDataBaseTest {
 	
 	@Test
 	public void cambiarPassword() throws Exception{
-		Usuario usuario = new Usuario("Inconforme", "nolose", "Juan", "Lopez", "jl@email.com", new Date(1986, 05, 14));
-		home.registrarUsuario(usuario);
+		home.registrarUsuario(usuarioDePrueba);
 		
-		home.cambiarPassword("Inconforme", "nolose", "lanuevapass");
+		home.cambiarPassword("CosmeFu", "1234", "lanuevapass");
 		
-		Usuario usuarioConNuevaPass = home.ingresarUsuario("Inconforme", "lanuevapass");
+		Usuario usuarioConNuevaPass = home.ingresarUsuario("CosmeFu", "lanuevapass");
 		assertNotNull(usuarioConNuevaPass); // check it!
-		assertEquals(usuarioConNuevaPass.getNombre(), usuario.getNombre());
-		assertEquals(usuario.getApellido(), usuarioConNuevaPass.getApellido());
-		assertEquals(usuario.getUsername(), usuarioConNuevaPass.getUsername());
-		assertEquals(usuario.getFechaDeNac(), usuarioConNuevaPass.getFechaDeNac());
+		assertEquals(usuarioDePrueba.getNombre(), usuarioConNuevaPass.getNombre());
+		assertEquals(usuarioDePrueba.getApellido(), usuarioConNuevaPass.getApellido());
+		assertEquals(usuarioDePrueba.getUsername(), usuarioConNuevaPass.getUsername());
+		assertEquals(usuarioDePrueba.getFechaDeNac(), usuarioConNuevaPass.getFechaDeNac());
 	}
 }
