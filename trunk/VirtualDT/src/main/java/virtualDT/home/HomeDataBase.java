@@ -21,7 +21,7 @@ public class HomeDataBase implements Home {
 	public void registrarUsuario(final Usuario usuarioNuevo) {
 		Executor<Void> task = new Executor<Void>() {
 			public Void execute(Connection connection) throws SQLException {
-				PreparedStatement statement = connection.prepareStatement("INSERT INTO usuarios(nombre, apellido, nombreUsuario, password, email, fechaNac) VALUES (?, ?, ?, ?, ?)");
+				PreparedStatement statement = connection.prepareStatement("INSERT INTO usuarios(nombre, apellido, nombreUsuario, password, email, fechaNac) VALUES (?, ?, ?, ?, ?, ?)");
 				statement.setString(1, usuarioNuevo.getNombre());
 				statement.setString(2, usuarioNuevo.getApellido());
 				statement.setString(3, usuarioNuevo.getUsername());
@@ -62,7 +62,7 @@ public class HomeDataBase implements Home {
 				if(resultSet.next()){
 					statement = connection.prepareStatement("DELETE FROM validaciones WHERE codigo = ?");
 					statement.setString(1, codigoValidación);
-					statement.executeQuery();
+					statement.executeUpdate();
 				}
 				return null;
 			}
@@ -77,16 +77,15 @@ public class HomeDataBase implements Home {
 				statement.setString(1, userName);
 				ResultSet resultSet = statement.executeQuery();
 				if(resultSet.next()){
-					return new Usuario(resultSet.getString("nombre"), resultSet.getString("apellido"), resultSet.getString("nomnbreUsuario"),
-											resultSet.getString("password"), resultSet.getString("email"), resultSet.getDate("FechaNac"));
+					return new Usuario(resultSet.getString("nombreUsuario"), resultSet.getString("password"), resultSet.getString("nombre"),resultSet.getString("apellido")
+											, resultSet.getString("email"), resultSet.getDate("FechaNac"));
 				}else{
 					throw new UsuarioNoExiste(userName);
 				}
 			}
 			
 		};
-		this.execute(task);
-		return null;
+		return this.execute(task);
 	}
 	
 
@@ -110,12 +109,24 @@ public class HomeDataBase implements Home {
 				PreparedStatement statement = connection.prepareStatement("UPDATE usuarios SET password = ? WHERE nombreUsuario = ?");
 				statement.setString(1, usuario.getPassword());
 				statement.setString(2, usuario.getUsername());
-				
+				statement.executeUpdate();
 				return null;
 			}
 		};
 		this.execute(task);
 	}
+	
+	public void deleteUsuario(final Usuario usuario) {
+		Executor<Void> task = new Executor<Void>() {			
+			public Void execute(Connection connection) throws SQLException {
+				PreparedStatement statement = connection.prepareStatement("DELETE usuarios WHERE nombreUsuario = ?");
+				statement.setString(1, usuario.getUsername());
+				statement.executeUpdate();
+				return null;
+			}
+		};
+		this.execute(task);
+	}	
 	
 	protected <T> T execute(Executor<T> executor){
 		try {
