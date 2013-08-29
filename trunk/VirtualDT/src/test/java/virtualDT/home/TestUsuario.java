@@ -1,7 +1,4 @@
-package grupo3.tests;
-
-import grupo3.Usuario;
-import grupo3.exception.ValidaciónException;
+package virtualDT.home;
 
 import java.util.Date;
 import java.util.GregorianCalendar;

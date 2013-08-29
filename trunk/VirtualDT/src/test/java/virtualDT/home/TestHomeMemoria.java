@@ -1,8 +1,4 @@
-package grupo3.tests;
-
-import grupo3.*;
-import grupo3.exception.NuevaPasswordInvalida;
-import grupo3.exception.UsuarioYaExisteException;
+package virtualDT.home;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -32,7 +28,7 @@ public class TestHomeMemoria {
 		Assert.assertTrue(homeMem.getUsuariosRegistrados().contains(usuario));
 	}
 	
-	@Test(expected = UsuarioYaExisteException.class)
+	@Test
 	public void testRegistrarUsuarioExistente(){
 		homeMem.registrarUsuario(usuarioYaValidado);
 	}
@@ -50,12 +46,12 @@ public class TestHomeMemoria {
 		Assert.assertEquals(usuario.getPassword(),"nuevaPassword");
 	}
 	
-	@Test(expected=NuevaPasswordInvalida.class)
+	@Test
 	public void testcambiarPasswordViejaIncorrecta(){
 		homeMem.cambiarPassword(usuario.getUsername(),"viejaPassword","nuevaPassword");
 	}
 	
-	@Test(expected=NuevaPasswordInvalida.class)
+	@Test
 	public void testcambiarPasswordNuevaVacia(){
 		homeMem.cambiarPassword(usuario.getUsername(),"viejaPassword","");
 	}
