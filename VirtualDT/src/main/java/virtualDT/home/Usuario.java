@@ -109,11 +109,7 @@ public class Usuario {
 		return true;
 	}
 	
-	public void validarCuenta(String codigoValidación){
-		if(!getEstaValidado()){
-			setEstaValidado(true);
-		} else {
-			throw new ValidaciónException();
-		}
+	public void validarCuenta(){
+		this.estaValidado = true;
 	}
 }
