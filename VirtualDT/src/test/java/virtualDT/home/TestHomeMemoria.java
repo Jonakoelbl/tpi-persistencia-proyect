@@ -71,6 +71,11 @@ public class TestHomeMemoria {
 		homeMem.validarCuenta("b123579");
 	}
 	
+	@Test(expected=ValidaciónException.class)
+	public void testUsuarioYaValidado21(){
+		homeMem.validarCuenta("b123579");
+	}
+	
 	public void testUsuarioRegistradoEnHashmap(){
 		Assert.assertTrue(homeMem.getValidaciones().containsValue(usuarioYaValidado));
 	}
