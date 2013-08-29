@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import virtualDT.exception.ValidaciónException;
+
 public class TestUsuario {
 	Usuario usuario;
 	Usuario usuarioYaValidado;
@@ -18,17 +20,17 @@ public class TestUsuario {
 		Date fechaNac = new GregorianCalendar(2000,02,01).getTime();
 		usuario = new Usuario("username", "password", "nombre", "apellido", "email",fechaNac);
 		usuarioYaValidado = new Usuario("username1", "password1", "nombre1", "apellido1", "email1",fechaNac);
-		usuarioYaValidado.validarCuenta(CodigoDeValidacion);
+		usuarioYaValidado.validarCuenta();
 	}
 	
 	@Test
 	public void testValidarCuentaNoExistente(){
-		usuario.validarCuenta(CodigoDeValidacion);
+		usuario.validarCuenta();
 		Assert.assertTrue(usuario.getEstaValidado());
 	}
 	
-	@Test
+	@Test(expected=ValidaciónException.class)
 	public void testValidarCuentaExistente(){
-		usuarioYaValidado.validarCuenta(CodigoDeValidacion);
+		usuarioYaValidado.validarCuenta();
 	}
 }
