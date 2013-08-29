@@ -27,7 +27,7 @@ public class TestUsuario {
 		Assert.assertTrue(usuario.getEstaValidado());
 	}
 	
-	@Test(expected=ValidaciónException.class)
+	@Test
 	public void testValidarCuentaExistente(){
 		usuarioYaValidado.validarCuenta(CodigoDeValidacion);
 	}
