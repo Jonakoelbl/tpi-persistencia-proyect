@@ -3,15 +3,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-
 import virtualDT.exception.*;
 
 public class HomeMemoria implements Home{
 
 	private List<Usuario> usuariosRegistrados = new Vector<Usuario>();
-	private Map<String, Usuario> validaciones = new HashMap();
+	public Map<String, Usuario> validaciones = new HashMap<String, Usuario>();
 	
+	public Map<String, Usuario> getValidaciones() {
+		return validaciones;
+	}
+
+	public void setValidaciones(Map<String, Usuario> validaciones) {
+		this.validaciones = validaciones;
+	}
+
 	public void registrarUsuario(Usuario usuarioNuevo)
 			throws UsuarioYaExisteException {
 		for (Usuario usuario : this.usuariosRegistrados) {
@@ -52,7 +58,7 @@ public class HomeMemoria implements Home{
 	}
 	
 	public void cambiarPassword(String userName, String password, String nuevaPassword) throws NuevaPasswordInvalida {
-		if(getUsuarioByUsername(userName).getPassword().equals(password) && (password != "")){
+		if (getUsuarioByUsername(userName).getPassword().equals(password)) {
 			getUsuarioByUsername(userName).setPassword(nuevaPassword);
 		} else {
 			throw new NuevaPasswordInvalida();

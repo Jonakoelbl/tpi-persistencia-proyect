@@ -110,6 +110,6 @@ public class Usuario {
 	}
 	
 	public void validarCuenta(){
-		this.estaValidado = true;
+		this.setEstaValidado(true);
 	}
 }
