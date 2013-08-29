@@ -24,13 +24,8 @@ public class TestUsuario {
 	}
 	
 	@Test
-	public void testValidarCuentaNoExistente(){
+	public void testValidarCuentaExitoso(){
 		usuario.validarCuenta();
 		Assert.assertTrue(usuario.getEstaValidado());
-	}
-	
-	@Test(expected=ValidaciónException.class)
-	public void testValidarCuentaExistente(){
-		usuarioYaValidado.validarCuenta();
 	}
 }
