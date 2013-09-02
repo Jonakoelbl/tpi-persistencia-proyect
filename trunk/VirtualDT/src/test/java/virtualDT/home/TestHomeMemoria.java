@@ -16,12 +16,14 @@ public class TestHomeMemoria {
 	Usuario usuario;
 	Usuario usuarioYaValidado;
     Usuario usuarioYaValidado1;
+    Usuario usuarioParaRegistrar;
 	
 	@Before
 	public void miSetUp(){
 		homeMem = new HomeMemoria();
 		Date fechaNac = new GregorianCalendar(2000,02,01).getTime();
 		usuario = new Usuario("username", "password", "nombre", "apellido", "email",fechaNac);
+		usuarioParaRegistrar = new Usuario("usuarioParaRegistrar", "password", "nombre", "apellido", "email",fechaNac);
 		usuarioYaValidado = new Usuario("username1", "password1", "nombre1", "apellido1", "email1",fechaNac);
 		homeMem.getUsuariosRegistrados().add(usuario);
 		homeMem.registrarUsuario(usuarioYaValidado);
@@ -32,7 +34,8 @@ public class TestHomeMemoria {
 	
 	@Test
 	public void testRegistrarUsuarioNoExistente(){
-		Assert.assertTrue(homeMem.getUsuariosRegistrados().contains(usuario));
+		homeMem.registrarUsuario(usuarioParaRegistrar);
+		Assert.assertTrue(homeMem.getUsuariosRegistrados().contains(usuarioParaRegistrar));
 	}
 	
 	@Test(expected = UsuarioYaExisteException.class)
