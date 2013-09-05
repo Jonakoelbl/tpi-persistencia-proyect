@@ -43,4 +43,9 @@ public class Equipo {
 	public void setFormaciones(List<Formacion> formaciones) {
 		this.formaciones = formaciones;
 	}
+
+	public int puntajeSegunFormacion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

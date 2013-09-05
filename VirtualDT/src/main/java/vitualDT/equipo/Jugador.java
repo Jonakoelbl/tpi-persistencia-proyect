@@ -27,4 +27,8 @@ public class Jugador {
 	public void setPuntajeSegunPosicion(Map<Posicion, Integer> puntajeSegunPosicion) {
 		this.puntajeSegunPosicion = puntajeSegunPosicion;
 	}
+	
+	public int puntajeDeJugadorEnPosicion(Posicion p){
+		return (this.getPuntajeSegunPosicion().get(p));
+	}
 }
