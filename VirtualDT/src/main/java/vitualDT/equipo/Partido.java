@@ -4,14 +4,14 @@ import virtualDT.torneo.ResultadoPartido;
 
 
 public class Partido {
-	Formacion equipoLocal;
-	Formacion equipoVisitante;
+	Equipo equipoLocal;
+	Equipo equipoVisitante;
 	
 	public Partido(){
 		//hibernate
 	}
 	
-	public Partido(Formacion elEquipo1, Formacion elEquipo2){
+	public Partido(Equipo elEquipo1, Equipo elEquipo2){
 		this.equipoLocal = elEquipo1;
 		this.equipoVisitante = elEquipo2;
 	}
@@ -30,28 +30,32 @@ public class Partido {
 	}
 		
 	public ResultadoPartido jugarYDevolverGanador(){
-		if(this.leGano(this.equipoLocal, this.equipoVisitante,15)){
+		if(this.leGano(this.equipoLocal.getFormacionActual(), this.equipoVisitante.getFormacionActual(),15)){
+			this.equipoLocal.sumarPuntuacion(3);
 			return ResultadoPartido.LOCAL;
-		} else if (this.leGano(this.equipoVisitante,this.equipoLocal,20)){
+		} else if (this.leGano(this.equipoVisitante.getFormacionActual(),this.equipoLocal.getFormacionActual(),20)){
+			this.equipoVisitante.sumarPuntuacion(3);
 			return ResultadoPartido.VISITANTE;
 		} else {
+			this.equipoLocal.sumarPuntuacion(1);
+			this.equipoVisitante.sumarPuntuacion(1);
 			return ResultadoPartido.EMPATE;
 		}
 	}
 
-	protected Formacion getEquipoLocal() {
+	public Equipo getEquipoLocal() {
 		return equipoLocal;
 	}
 
-	protected void setEquipoLocal(Formacion equipoLocal) {
+	public void setEquipoLocal(Equipo equipoLocal) {
 		this.equipoLocal = equipoLocal;
 	}
 
-	protected Formacion getEquipoVisitante() {
+	public Equipo getEquipoVisitante() {
 		return equipoVisitante;
 	}
 
-	protected void setEquipoVisitante(Formacion equipoVisitante) {
+	public void setEquipoVisitante(Equipo equipoVisitante) {
 		this.equipoVisitante = equipoVisitante;
-	}
+	}	
 }
