@@ -1,5 +1,4 @@
 package vitualDT.equipo;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,12 +9,9 @@ public class Formacion {
 	public Formacion() { // Hibernate ...
 	}
 	
-	
-	/*public Formacion(List<Jugador> jugadores){
-		this.jugadores.addAll(jugadores);
+	public Formacion(Map<Jugador,Posicion> jcp){
+		this.jugadoresConPosiciones = jcp;
 	}
-
-	 */
 	
 	public int puntajeFormacion(){
 		int puntajeTotal = 0;
