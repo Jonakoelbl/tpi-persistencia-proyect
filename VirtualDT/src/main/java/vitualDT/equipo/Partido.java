@@ -1,34 +1,19 @@
 package vitualDT.equipo;
 
+import virtualDT.torneo.ResultadoPartido;
+
 
 public class Partido {
-	Formacion equipoA;
-	Formacion equipoB;
+	Formacion equipoLocal;
+	Formacion equipoVisitante;
 	
-	
-	public Formacion getEquipoA() {
-		return equipoA;
-	}
-
-	public void setEquipoA(Formacion e1) {
-		this.equipoA = e1;
-	}
-
-	public Formacion getEquipoB() {
-		return equipoB;
-	}
-
-	public void setEquipoB(Formacion e2) {
-		this.equipoB = e2;
-	}
-
 	public Partido(){
 		//hibernate
 	}
 	
 	public Partido(Formacion elEquipo1, Formacion elEquipo2){
-		this.equipoA = elEquipo1;
-		this.equipoB = elEquipo2;
+		this.equipoLocal = elEquipo1;
+		this.equipoVisitante = elEquipo2;
 	}
 	
 	
@@ -43,16 +28,30 @@ public class Partido {
 	private boolean leGano(Formacion e1, Formacion e2,int porcentaje){
 		return multiplicarConRandom(e1.puntajeFormacion()) - multiplicarConRandom(puntajeDeEquipoMasXPorCiento(e2,porcentaje)) > 0;
 	}
-	
-	public String jugarYDevolverGanador(){
-		String ganador;
-		if(this.leGano(this.equipoA, this.equipoB,15)){
-			ganador = "Local";
-		} else if (this.leGano(this.equipoB,this.equipoA,20)){
-			ganador = "Visitante";
+		
+	public ResultadoPartido jugarYDevolverGanador(){
+		if(this.leGano(this.equipoLocal, this.equipoVisitante,15)){
+			return ResultadoPartido.LOCAL;
+		} else if (this.leGano(this.equipoVisitante,this.equipoLocal,20)){
+			return ResultadoPartido.VISITANTE;
 		} else {
-			ganador = "Empate";
+			return ResultadoPartido.EMPATE;
 		}
-		return ganador;
+	}
+
+	protected Formacion getEquipoLocal() {
+		return equipoLocal;
+	}
+
+	protected void setEquipoLocal(Formacion equipoLocal) {
+		this.equipoLocal = equipoLocal;
+	}
+
+	protected Formacion getEquipoVisitante() {
+		return equipoVisitante;
+	}
+
+	protected void setEquipoVisitante(Formacion equipoVisitante) {
+		this.equipoVisitante = equipoVisitante;
 	}
 }
