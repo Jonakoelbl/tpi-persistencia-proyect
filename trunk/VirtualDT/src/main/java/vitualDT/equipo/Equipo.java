@@ -7,6 +7,7 @@ public class Equipo {
 	private String nombreDelEquipo;
 	private List<Jugador> jugadores = new Vector<Jugador>();
 	private List<Formacion> formaciones = new Vector<Formacion>();
+	private Formacion formacionActual;
 	
 	public Equipo() {// Hibernate ...
 	}
@@ -14,6 +15,10 @@ public class Equipo {
 	public Equipo(String nombreDelEquipo, List<Jugador> jugadores){
 		this.nombreDelEquipo = nombreDelEquipo;
 		this.jugadores.addAll(jugadores);
+	}
+	
+	public int puntajeDeLaFormacion() {
+		return this.formacionActual.puntajeFormacion();
 	}
 
 	public void agregarFormacion(Formacion formacion){
@@ -44,8 +49,11 @@ public class Equipo {
 		this.formaciones = formaciones;
 	}
 
-	public int puntajeSegunFormacion() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Formacion getFormacionActual() {
+		return formacionActual;
+	}
+
+	public void setFormacionActual(Formacion formacionActual) {
+		this.formacionActual = formacionActual;
 	}
 }

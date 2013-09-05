@@ -5,16 +5,6 @@ import java.util.Map;
 
 public class Formacion {
 	Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
-	
-	public Map<Jugador, Posicion> getJugadoresConPosiciones() {
-		return jugadoresConPosiciones;
-	}
-
-
-	public void setJugadoresConPosiciones(
-			Map<Jugador, Posicion> jugadoresConPosiciones) {
-		this.jugadoresConPosiciones = jugadoresConPosiciones;
-	}
 
 
 	public Formacion() { // Hibernate ...
@@ -25,13 +15,7 @@ public class Formacion {
 		this.jugadores.addAll(jugadores);
 	}
 
-	public List<Jugador> getJugadores() {
-		return jugadores;
-	}
-
-	public void setJugadores(List<Jugador> jugadores) {
-		this.jugadores = jugadores;
-	}*/
+	 */
 	
 	public int puntajeFormacion(){
 		int puntajeTotal = 0;
@@ -39,5 +23,13 @@ public class Formacion {
 			puntajeTotal = puntajeTotal + j.puntajeDeJugadorEnPosicion(this.getJugadoresConPosiciones().get(j));
 		}
 		return puntajeTotal;
+	}
+	
+	public Map<Jugador, Posicion> getJugadoresConPosiciones() {
+		return jugadoresConPosiciones;
+	}
+	
+	public void setJugadoresConPosiciones(Map<Jugador, Posicion> jugadoresConPosiciones) {
+		this.jugadoresConPosiciones = jugadoresConPosiciones;
 	}
 }
