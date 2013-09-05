@@ -5,6 +5,7 @@ import java.util.Vector;
 
 public class Equipo {
 	private String nombreDelEquipo;
+	private Integer puntaje = 0;
 	private List<Jugador> jugadores = new Vector<Jugador>();
 	private List<Formacion> formaciones = new Vector<Formacion>();
 	private Formacion formacionActual;
@@ -55,5 +56,17 @@ public class Equipo {
 
 	public void setFormacionActual(Formacion formacionActual) {
 		this.formacionActual = formacionActual;
+	}
+
+	public void sumarPuntuacion(int i) {
+		this.puntaje += i;
+	}
+
+	public Integer getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(Integer puntaje) {
+		this.puntaje = puntaje;
 	}
 }
