@@ -1,26 +1,25 @@
 package vitualDT.equipo;
 
-import java.util.Random;
 
 public class Partido {
-	Formacion e1;
-	Formacion e2;
+	Formacion equipoA;
+	Formacion equipoB;
 	
 	
-	public Formacion getE1() {
-		return e1;
+	public Formacion getEquipoA() {
+		return equipoA;
 	}
 
-	public void setE1(Formacion e1) {
-		this.e1 = e1;
+	public void setEquipoA(Formacion e1) {
+		this.equipoA = e1;
 	}
 
-	public Formacion getE2() {
-		return e2;
+	public Formacion getEquipoB() {
+		return equipoB;
 	}
 
-	public void setE2(Formacion e2) {
-		this.e2 = e2;
+	public void setEquipoB(Formacion e2) {
+		this.equipoB = e2;
 	}
 
 	public Partido(){
@@ -28,8 +27,8 @@ public class Partido {
 	}
 	
 	public Partido(Formacion elEquipo1, Formacion elEquipo2){
-		this.e1 = elEquipo1;
-		this.e2 = elEquipo2;
+		this.equipoA = elEquipo1;
+		this.equipoB = elEquipo2;
 	}
 	
 	
@@ -38,7 +37,7 @@ public class Partido {
 	}
 	
 	private double multiplicarConRandom(int n){
-		return n * Math.random()*(0.9-1.3)+1.3;
+		return n * ((Math.random()* 0.2) + 0.9);
 	}
 	
 	private boolean leGano(Formacion e1, Formacion e2,int porcentaje){
@@ -47,9 +46,9 @@ public class Partido {
 	
 	public String jugarYDevolverGanador(){
 		String ganador;
-		if(leGano(this.getE1(), this.getE2(),15)){
+		if(this.leGano(this.equipoA, this.equipoB,15)){
 			ganador = "Local";
-		} else if (leGano(this.getE2(),this.getE1(),20)){
+		} else if (this.leGano(this.equipoB,this.equipoA,20)){
 			ganador = "Visitante";
 		} else {
 			ganador = "Empate";
