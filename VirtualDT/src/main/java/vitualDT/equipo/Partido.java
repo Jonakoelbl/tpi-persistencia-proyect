@@ -1,11 +1,11 @@
 package vitualDT.equipo;
 
-import virtualDT.torneo.ResultadoPartido;
+import virtualDT.torneo.Resultado;
+import virtualDT.torneo.ResultadoDelPartido;
 
 
 public class Partido {
-	Equipo equipoLocal;
-	Equipo equipoVisitante;
+	private Equipo equipoLocal, equipoVisitante;
 	
 	public Partido(){
 		//hibernate
@@ -29,17 +29,17 @@ public class Partido {
 		return multiplicarConRandom(e1.puntajeFormacion()) - multiplicarConRandom(puntajeDeEquipoMasXPorCiento(e2,porcentaje)) > 0;
 	}
 		
-	public ResultadoPartido jugarYDevolverGanador(){
+	public ResultadoDelPartido jugarYDevolverGanador(){
 		if(this.leGano(this.equipoLocal.getFormacionActual(), this.equipoVisitante.getFormacionActual(),15)){
 			this.equipoLocal.sumarPuntuacion(3);
-			return ResultadoPartido.LOCAL;
+			return new ResultadoDelPartido(this.equipoLocal.getNombreDelEquipo(), Resultado.LOCAL);
 		} else if (this.leGano(this.equipoVisitante.getFormacionActual(),this.equipoLocal.getFormacionActual(),20)){
 			this.equipoVisitante.sumarPuntuacion(3);
-			return ResultadoPartido.VISITANTE;
+			return new ResultadoDelPartido(this.equipoVisitante.getNombreDelEquipo(), Resultado.VISITANTE);
 		} else {
 			this.equipoLocal.sumarPuntuacion(1);
 			this.equipoVisitante.sumarPuntuacion(1);
-			return ResultadoPartido.EMPATE;
+			return new ResultadoDelPartido("", Resultado.EMPATE);//No me gusta...
 		}
 	}
 
