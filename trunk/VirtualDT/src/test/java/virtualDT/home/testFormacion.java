@@ -7,9 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import vitualDT.equipo.Formacion;
-import vitualDT.equipo.Jugador;
-import vitualDT.equipo.Posicion;
+import virtualDT.equipo.Formacion;
+import virtualDT.equipo.Jugador;
+import virtualDT.equipo.Posicion;
 
 public class testFormacion {
 

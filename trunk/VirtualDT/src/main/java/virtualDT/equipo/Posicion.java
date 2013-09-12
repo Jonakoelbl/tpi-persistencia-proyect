@@ -1,4 +1,4 @@
-package vitualDT.equipo;
+package virtualDT.equipo;
 
 public enum Posicion {
 	ARQUERO, LATERAL, DEFENSORCENTRAL, MEDIOCAMPISTA, VOLANTE, CENTRODELANTERO, DELANTERO;

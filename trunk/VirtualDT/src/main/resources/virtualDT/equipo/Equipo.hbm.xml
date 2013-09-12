@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        <!-- private String nombreDelEquipo;
+	private List<Jugador> jugadores = new Vector<Jugador>();
+	private List<Formacion> formaciones = new Vector<Formacion>();
+	private Formacion formacionActual;
+	private int puntosAdquiridos; -->
+
+<hibernate-mapping>
+	<class name = "virtualDT.equipo.Equipo" table="EQUIPOS">
+		<id name ="id" type="java.lang.Integer">
+			<column name ="ID_EQUIPO" />
+			<generator class="identity" />
+		</id>
+		<property name ="nombreEquipo" type="java.lang.String">
+			<column name ="NOMBRE_EQUIPO" />
+		</property>
+<!-- 		<listaDeJugadores name="listaDeJugadores"> 
+			<column name ="JUGADORES"></column> 
+		</listaDeJugadores> 
+ 		<property name="listaDeFormaciones"></property>
+		<property name ="formacionActual">
+			<column name ="FORMACION_ACTUAL" />
+		</property>
+		<property name ="puntosAdquiridos" type="java.lang.Integer">
+			<column name ="PUNTAJE"/>
+		</property>-->
+	</class>
+</hibernate-mapping>

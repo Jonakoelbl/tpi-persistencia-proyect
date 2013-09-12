@@ -1,4 +1,4 @@
-package vitualDT.equipo;
+package virtualDT.equipo;
 
 import virtualDT.torneo.Resultado;
 import virtualDT.torneo.ResultadoDelPartido;

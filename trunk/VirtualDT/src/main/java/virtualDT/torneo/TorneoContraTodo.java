@@ -3,7 +3,7 @@ package virtualDT.torneo;
 import java.util.List;
 import java.util.Vector;
 
-import vitualDT.equipo.Partido;
+import virtualDT.equipo.Partido;
 
 public class TorneoContraTodo extends Torneo{
 	
