@@ -14,7 +14,7 @@
 			<column name ="ID_EQUIPO" />
 			<generator class="identity" />
 		</id>
-		<property name ="nombreEquipo" type="java.lang.String">
+		<property name ="nombreDelEquipo" type="java.lang.String">
 			<column name ="NOMBRE_EQUIPO" />
 		</property>
 <!-- 		<listaDeJugadores name="listaDeJugadores"> 
