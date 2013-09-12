@@ -1,6 +1,6 @@
 package virtualDT.torneo;
 
-import vitualDT.equipo.Partido;
+import virtualDT.equipo.Partido;
 
 public class PartidoDeCopa {
 	private Partido PartidoA, PartidoB;

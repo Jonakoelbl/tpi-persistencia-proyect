@@ -1,4 +1,4 @@
-package vitualDT.equipo;
+package virtualDT.equipo;
 
 import java.util.HashMap;
 import java.util.Map;
