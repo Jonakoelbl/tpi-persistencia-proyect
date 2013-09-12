@@ -1,5 +1,5 @@
 package virtualDT.torneo;
 
-public enum ResultadoPartido {
+public enum Resultado {
 	LOCAL, EMPATE, VISITANTE;
 }

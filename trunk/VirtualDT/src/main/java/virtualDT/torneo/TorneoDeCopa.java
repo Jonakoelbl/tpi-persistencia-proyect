@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class TorneoDeCopa extends Torneo{
 	private List<PartidoDeCopa> partidosDeCopa = new Vector<PartidoDeCopa>();
-	private List<ResultadoPartido> resultadosDelPartido = new Vector<ResultadoPartido>();
+	private List<Resultado> resultadosDelPartido = new Vector<Resultado>();
 	
 	@Override
 	public void jugarTorneo() {
@@ -23,12 +23,12 @@ public class TorneoDeCopa extends Torneo{
 		this.partidosDeCopa = partidosDeCopa;
 	}
 
-	protected List<ResultadoPartido> getResultadosDelPartido() {
+	protected List<Resultado> getResultadosDelPartido() {
 		return resultadosDelPartido;
 	}
 
 	protected void setResultadosDelPartido(
-			List<ResultadoPartido> resultadosDelPartido) {
+			List<Resultado> resultadosDelPartido) {
 		this.resultadosDelPartido = resultadosDelPartido;
 	}
 }

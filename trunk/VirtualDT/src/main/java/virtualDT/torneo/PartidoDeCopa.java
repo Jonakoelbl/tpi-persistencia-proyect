@@ -10,34 +10,37 @@ public class PartidoDeCopa {
 		this.PartidoB = partidoB;
 	}
 	
-	public ResultadoPartido jugarPartido(){
-		ResultadoPartido resultadoPartidoA = this.PartidoA.jugarYDevolverGanador();
-		ResultadoPartido resultadoPartidoB = this.PartidoB.jugarYDevolverGanador();
+	/**
+	 * Devuelve el ganador del partido
+	 */
+	public Resultado jugarPartido(){
+		ResultadoDelPartido resultadoPartidoA = this.PartidoA.jugarYDevolverGanador();
+		ResultadoDelPartido resultadoPartidoB = this.PartidoB.jugarYDevolverGanador();
 		
-		return this.resultadoDelPartido(resultadoPartidoA, resultadoPartidoB);
+		return this.resultadoDelPartido(resultadoPartidoA.getResultado(), resultadoPartidoB.getResultado());
 	}
 	
-	protected ResultadoPartido resultadoDelPartido(ResultadoPartido resultadoA, ResultadoPartido resultadoB){
+	protected Resultado resultadoDelPartido(Resultado resultadoA, Resultado resultadoB){
 		
-		if(resultadoA == resultadoB && resultadoA != ResultadoPartido.EMPATE && resultadoB != ResultadoPartido.EMPATE){
+		if(resultadoA == resultadoB && resultadoA != Resultado.EMPATE && resultadoB != Resultado.EMPATE){
 				return resultadoA;
 		}else if(resultadoA != resultadoB){
-			if(resultadoB != ResultadoPartido.EMPATE)
+			if(resultadoB != Resultado.EMPATE)
 				return resultadoA;
 			else
 				return this.pasarAPenales();
-		}else if(resultadoA == ResultadoPartido.EMPATE){
+		}else if(resultadoA == Resultado.EMPATE){
 			return resultadoB;
 		}else{
 			return this.pasarAPenales();
 		}
 	}
 	
-	protected ResultadoPartido pasarAPenales(){
+	protected Resultado pasarAPenales(){
 		int match = (int) Math.random();
 		if(match > 1)
-			return ResultadoPartido.LOCAL;
+			return Resultado.LOCAL;
 		else
-			return ResultadoPartido.VISITANTE;
+			return Resultado.VISITANTE;
 	}
 }
