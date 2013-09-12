@@ -28,7 +28,7 @@ public class HomeParaHibernateTest{
 
 	@Test
 	public void AlmacenarEquipoMelones() {
-		s.save(e); 
+		s.save(e);
 	}
 	
 	@After

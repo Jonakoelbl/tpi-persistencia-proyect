@@ -14,7 +14,7 @@
     
 	<!-- que motor de bbdd voy a usar porque cambian las queries -->
 	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">validate</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="show_sql">true</property>
 
     <mapping resource="virtualDT/equipo/Equipo.hbm.xml"></mapping>
