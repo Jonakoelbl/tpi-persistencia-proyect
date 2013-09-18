@@ -27,10 +27,11 @@ public class Equipo {
 		this.nombreDelEquipo = n;
 	}
 	
-	public Equipo(String nombreDelEquipo, List<Jugador> jugadores){
+	public Equipo(String nombreDelEquipo, List<Jugador> jugadores,int id){
 		this.nombreDelEquipo = nombreDelEquipo;
 		this.jugadores.addAll(jugadores);
 		this.puntosAdquiridos = 0;
+		this.id = id;
 	}
 	
 	public int getPuntosAdquiridos() {
