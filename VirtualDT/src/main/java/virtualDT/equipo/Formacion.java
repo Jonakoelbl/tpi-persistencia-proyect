@@ -3,8 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Formacion {
-	Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
-
+	private Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
+	private int id; 
 
 	public Formacion() { // Hibernate ...
 	}
@@ -27,5 +27,13 @@ public class Formacion {
 	
 	public void setJugadoresConPosiciones(Map<Jugador, Posicion> jugadoresConPosiciones) {
 		this.jugadoresConPosiciones = jugadoresConPosiciones;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

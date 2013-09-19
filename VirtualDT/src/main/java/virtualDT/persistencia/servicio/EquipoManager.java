@@ -11,11 +11,11 @@ public class EquipoManager extends Manager<Equipo>{
 		super(Equipo.class, "nombreDelEquipo");
 	}
 
-	public void guardarFormacion(final String criterio, final Formacion formacion){
-		final Equipo eq = this.consultar(criterio);
+	public void guardarFormacion(final String nombreEquipo, final Formacion formacion){
 		SessionManager.runInSession(new Operation<Void>() {
 
 			public Void execute() {
+				Equipo eq = EquipoManager.this.consultar(nombreEquipo);
 				eq.agregarFormacion(formacion);
 				SessionManager.getSession().saveOrUpdate(eq);
 				return null;

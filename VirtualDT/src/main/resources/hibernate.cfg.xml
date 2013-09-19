@@ -18,6 +18,8 @@
     <property name="show_sql">true</property>
 
     <mapping resource="virtualDT/equipo/Equipo.hbm.xml"></mapping>
+    <mapping resource="virtualDT/equipo/Jugador.hbm.xml"></mapping>
+    <mapping resource="virtualDT/equipo/Formacion.hbm.xml"></mapping>
 		
    </session-factory>
 </hibernate-configuration>

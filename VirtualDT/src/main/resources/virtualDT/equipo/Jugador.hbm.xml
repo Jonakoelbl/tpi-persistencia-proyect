@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--
+private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integer>(); 	
+-->
+
+<hibernate-mapping>
+	<typedef name="Posicion" class="org.hibernate.type.EnumType">
+		<param name="enumClass">virtualDT.equipo.Posicion</param>
+	</typedef>
+	<class name="virtualDT.equipo.Jugador" table="JUGADORES">
+		<id name="id" type="java.lang.Integer">
+			<column name="ID_JUGADOR" />
+			<generator class="identity" />
+		</id>
+		<map name="puntajeSegunPosicion" cascade="all" table="PuntajeDeJugadores">
+			<key column="ID_JUGADOR" />
+			<map-key column="posicion" type="Posicion"/>
+			<element column="puntaje" type="java.lang.Integer"></element>
+		</map>
+	</class>
+</hibernate-mapping>

@@ -31,13 +31,21 @@ public class SessionManager {
 		Session session = null;
 		
 		try {
-			session = sessionFactory.openSession();
-			transaction = session.beginTransaction();
-
-			tlSession.set(session);
+			boolean alreadyHave = tlSession.get() != null;
 			
+			if(!alreadyHave){
+				session = sessionFactory.openSession();
+				transaction = session.beginTransaction();
+				tlSession.set(session);
+			}
+
 			result = cmd.execute();
 
+			if(alreadyHave){
+				session = null;
+				return result;
+			}
+			
 			session.flush();
 			transaction.commit();
 		} catch (Exception e) {
