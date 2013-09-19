@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Jugador {
-	Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integer>();
+	private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integer>();
 	
 	public Jugador(){
 		//hibernate
