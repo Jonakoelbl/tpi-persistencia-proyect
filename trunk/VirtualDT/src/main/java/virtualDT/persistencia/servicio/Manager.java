@@ -8,7 +8,7 @@ import virtualDT.persistencia.daos.SessionManager;
 
 public class Manager<T> implements ManagerDAO<T>{
 	
-	private String criterio;
+	protected String criterio;
 	private Class<T> clazz;
 	
 	public Manager(Class<T> clazz, String criterio) {

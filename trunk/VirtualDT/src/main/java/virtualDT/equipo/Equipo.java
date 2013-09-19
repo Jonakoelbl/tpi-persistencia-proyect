@@ -5,6 +5,13 @@ import java.util.Vector;
 
 public class Equipo {
 	private Integer id;
+	private String nombreDelEquipo;
+	private Integer puntaje = 0;
+	private List<Jugador> jugadores = new Vector<Jugador>();
+	private List<Formacion> formaciones = new Vector<Formacion>();
+	private Formacion formacionActual;
+	private int puntosAdquiridos;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -13,12 +20,6 @@ public class Equipo {
 		this.id = id;
 	}
 
-	private String nombreDelEquipo;
-	private Integer puntaje = 0;
-	private List<Jugador> jugadores = new Vector<Jugador>();
-	private List<Formacion> formaciones = new Vector<Formacion>();
-	private Formacion formacionActual;
-	private int puntosAdquiridos;
 	
 	public Equipo() {// Hibernate ...
 	}
@@ -27,11 +28,10 @@ public class Equipo {
 		this.nombreDelEquipo = n;
 	}
 	
-	public Equipo(String nombreDelEquipo, List<Jugador> jugadores,int id){
+	public Equipo(String nombreDelEquipo, List<Jugador> jugadores){
 		this.nombreDelEquipo = nombreDelEquipo;
 		this.jugadores.addAll(jugadores);
 		this.puntosAdquiridos = 0;
-		this.id = id;
 	}
 	
 	public int getPuntosAdquiridos() {

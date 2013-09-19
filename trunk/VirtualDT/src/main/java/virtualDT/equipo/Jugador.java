@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Jugador {
 	private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integer>();
-	
+	private int id;
 	public Jugador(){
 		//hibernate
 	}
@@ -30,5 +30,13 @@ public class Jugador {
 	
 	public int puntajeDeJugadorEnPosicion(Posicion p){
 		return (this.getPuntajeSegunPosicion().get(p));
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
