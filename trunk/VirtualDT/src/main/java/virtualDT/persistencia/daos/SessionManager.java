@@ -18,6 +18,7 @@ public class SessionManager {
 			cfg.configure();
 
 			sessionFactory = cfg.buildSessionFactory();
+			tlSession = new ThreadLocal<Session>();
 		}
 
 		return sessionFactory;
