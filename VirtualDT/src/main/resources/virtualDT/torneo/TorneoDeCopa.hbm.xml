@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+        <!-- private List<PartidoDeCopa> partidosDeCopa = new Vector<PartidoDeCopa>();
+	private List<Resultado> resultadosDelPartido = new Vector<Resultado>();
+	 mapear herencia porque hereda de torneo -->
+	
+<hibernate-mapping>
+<class name="TorneoDeCopa" table="TORNEO_DE_COPA">
+	<id name ="idP" type="java.lang.Integer">
+			<column name="ID_TORNEO_DE_COPA"></column>
+			<generator class="identity"></generator>
+	</id>
+	<set name="partidosDeCopa">
+    	<key column="ID_PARTIDO_DE_COPA"/>
+    	<one-to-many class="TorneoContraTodo"/>
+    </set>
+    <set name="resultadosDelPartido">
+    	<key column="ID_RESULTADO_DEL_PARTIDO"/>
+    	<one-to-many class="TorneoContraTodo"/>
+    </set>
+</class>
+</hibernate-mapping>

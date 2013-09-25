@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+        <!-- private List<Partido> partidos = new Vector<Partido>();
+	private List<ResultadoDelPartido> resultados= new Vector<ResultadoDelPartido>(); -->
+	
+<hibernate-mapping>
+<class name="TorneoContraTodo" table="TODOS_CONTRA_TODOS">
+	<id name ="idP" type="java.lang.Integer">
+			<column name="ID_TODOS_CONTRA_TODOS"></column>
+			<generator class="identity"></generator>
+	</id>
+	<set name="partidos">
+    	<key column="ID_PARTIDO"/>
+    	<one-to-many class="TorneoContraTodo"/>
+    </set>
+    <set name="resultados">
+    	<key column="ID_RESULTADO"/>
+    	<one-to-many class="TorneoContraTodo"/>
+    </set>
+</class>
+</hibernate-mapping>
