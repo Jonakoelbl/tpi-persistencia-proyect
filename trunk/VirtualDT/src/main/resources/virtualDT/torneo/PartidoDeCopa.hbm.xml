@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name ="virtualDT.torneo.PartidoDeCopa" table="PARTIDOS_DE_COPA">
+		<id name ="idP" type="java.lang.Integer">
+			<column name="ID_PARTIDO"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="partidoA" type="Partido">
+			<column name="PARTIDO_A"></column>
+		</property>
+		<property name="partidoB" type="Partido">
+			<column name="PARTIDO_B"></column>
+		</property>
+	</class>
+</hibernate-mapping>
