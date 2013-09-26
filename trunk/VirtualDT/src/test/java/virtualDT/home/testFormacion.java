@@ -30,17 +30,17 @@ public class testFormacion {
 	@Before
 	public void miSetUp(){
 		//Arquero,DefensorCentral, Lateral, Mediocampista, Volante, Centrodelantero, Delantero
-		j0 = new Jugador(30, 10, 10, 10, 20, 0, 0);
-		j1 = new Jugador(6, 9, 40, 10, 20, 0, 0);
-		j2 = new Jugador(1, 35, 35, 10, 20, 0, 0);
-		j3 = new Jugador(1, 20, 10, 10, 20, 0, 0);
-		j4 = new Jugador(1, 20, 10, 10, 20, 0, 0);
-		j5 = new Jugador(1, 10, 10, 60, 20, 0, 0);
-		j6 = new Jugador(1, 10, 10, 55, 20, 0, 0);
-		j7 = new Jugador(1, 10, 10, 10, 40, 0, 0);
-		j8 = new Jugador(1, 10, 10, 10, 40, 0, 0);
-		j9 = new Jugador(1, 10, 10, 10, 20, 70, 0);
-		j10 = new Jugador(1, 10, 10, 10, 20, 0, 100);
+		j0 = new Jugador("",30, 10, 10, 10, 20, 0, 0);
+		j1 = new Jugador("",6, 9, 40, 10, 20, 0, 0);
+		j2 = new Jugador("",1, 35, 35, 10, 20, 0, 0);
+		j3 = new Jugador("",1, 20, 10, 10, 20, 0, 0);
+		j4 = new Jugador("",1, 20, 10, 10, 20, 0, 0);
+		j5 = new Jugador("",1, 10, 10, 60, 20, 0, 0);
+		j6 = new Jugador("",1, 10, 10, 55, 20, 0, 0);
+		j7 = new Jugador("",1, 10, 10, 10, 40, 0, 0);
+		j8 = new Jugador("",1, 10, 10, 10, 40, 0, 0);
+		j9 = new Jugador("",1, 10, 10, 10, 20, 70, 0);
+		j10 = new Jugador("",1, 10, 10, 10, 20, 0, 100);
 		/////////////////////////////////////////////
 		laFormacion = new HashMap<Jugador, Posicion>();
 		/////////////////////////////////////////////

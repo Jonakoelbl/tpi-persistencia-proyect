@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
 <!--
 Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
 -->
@@ -16,9 +16,9 @@ Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
 			<generator class="identity" />
 		</id>
 		<map name="jugadoresConPosiciones" cascade="all" table="jugadoresEnPosiciones">
-			<key column="ID_FORMACION" />
+			<key column="ID_EQUIPO" />
 			<map-key-many-to-many class="virtualDT.equipo.Jugador"/>
-			<element column="Posicion" type="Posicion"></element>
+			<element column="Posicion" type="Posicion" ></element>
 		</map>
 	</class>
 </hibernate-mapping>

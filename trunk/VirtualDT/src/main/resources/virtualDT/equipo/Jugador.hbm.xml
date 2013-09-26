@@ -15,8 +15,12 @@ private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integ
 			<column name="ID_JUGADOR" />
 			<generator class="identity" />
 		</id>
+		<property name="nombre" type="java.lang.String">
+			<column name="nombreJugador"/>
+		</property>
+		
 		<map name="puntajeSegunPosicion" cascade="all" table="PuntajeDeJugadores">
-			<key column="ID_JUGADOR" />
+			<key column="puntajePosiciones" />
 			<map-key column="posicion" type="Posicion"/>
 			<element column="puntaje" type="java.lang.Integer"></element>
 		</map>
