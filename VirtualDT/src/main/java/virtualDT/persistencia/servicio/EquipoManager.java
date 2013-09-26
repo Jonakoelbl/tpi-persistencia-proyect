@@ -1,7 +1,11 @@
 package virtualDT.persistencia.servicio;
 
+import java.util.Map;
+
 import virtualDT.equipo.Equipo;
 import virtualDT.equipo.Formacion;
+import virtualDT.equipo.Jugador;
+import virtualDT.equipo.Posicion;
 import virtualDT.persistencia.daos.SessionManager;
 
 public class EquipoManager extends Manager<Equipo>{
@@ -15,11 +19,22 @@ public class EquipoManager extends Manager<Equipo>{
 		SessionManager.runInSession(new Operation<Void>() {
 
 			public Void execute() {
+			
+				//Guarda todos los jugadores
+				for (Map.Entry<Jugador, Posicion> lugarDeCancha : formacion.getJugadoresConPosiciones().entrySet()) {
+					SessionManager.getSession().saveOrUpdate(lugarDeCancha.getKey());
+				}
+				//Guarda la formacion
 				Equipo eq = EquipoManager.this.consultar(nombreEquipo);
 				eq.agregarFormacion(formacion);
-				SessionManager.getSession().saveOrUpdate(eq);
+				
+				
+				
+				
 				return null;
 			}
 		});
 	}
+	
+
 }

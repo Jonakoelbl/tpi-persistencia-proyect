@@ -26,7 +26,7 @@
 			<key column = "FORMACIONES" />
 			<one-to-many class = "virtualDT.equipo.Formacion"/>
 		</bag>
-		<many-to-one name="formacionActual" column="FORMACION_ACTUAL"></many-to-one>
+		<many-to-one name="formacionActual" column="FORMACION_ACTUAL" cascade="all"></many-to-one>
 		
 		<property name="puntosAdquiridos" type="java.lang.Integer">
 			<column name="PUNTAJE" />

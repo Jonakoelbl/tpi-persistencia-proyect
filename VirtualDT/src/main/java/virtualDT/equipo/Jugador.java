@@ -6,11 +6,14 @@ import java.util.Map;
 public class Jugador {
 	private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integer>();
 	private int id;
+	private String nombre;
+	
 	public Jugador(){
 		//hibernate
 	}
 	
-	public Jugador(int puntajeArquero, int puntajeDefensorCentral, int puntajeLateral, int puntajeMediocampista, int puntajeVolante, int puntajeCentrodelantero, int puntajeDelantero){
+	public Jugador(String nombre, int puntajeArquero, int puntajeDefensorCentral, int puntajeLateral, int puntajeMediocampista, int puntajeVolante, int puntajeCentrodelantero, int puntajeDelantero){
+		this.nombre = nombre;
 		this.puntajeSegunPosicion.put(Posicion.ARQUERO,puntajeArquero);
 		this.puntajeSegunPosicion.put(Posicion.DEFENSORCENTRAL,puntajeDefensorCentral);
 		this.puntajeSegunPosicion.put(Posicion.LATERAL,puntajeLateral);
@@ -38,5 +41,13 @@ public class Jugador {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 }
