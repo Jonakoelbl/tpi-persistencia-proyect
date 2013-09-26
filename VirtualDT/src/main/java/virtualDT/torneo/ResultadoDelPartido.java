@@ -1,6 +1,6 @@
 package virtualDT.torneo;
 
-public class ResultadoDelPartido {
+public class ResultadoDelPartido implements TipoResultado {
 	private Resultado resultado;
 	private String equipoGanador;
 	

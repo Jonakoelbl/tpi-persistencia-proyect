@@ -1,44 +1,20 @@
 package virtualDT.torneo;
 
 import java.util.List;
-import java.util.Vector;
 
-import virtualDT.equipo.Partido;
+import virtualDT.equipo.Equipo;
 
-public class TorneoContraTodo extends Torneo{
-	
-	private List<Partido> partidos = new Vector<Partido>();
-	private List<ResultadoDelPartido> resultados= new Vector<ResultadoDelPartido>();
+public class TorneoContraTodo extends Torneo<ResultadoDelPartido, PartidoSimple>{
 	
 	public TorneoContraTodo() {//Hibernate....
 	}
 	
-	public TorneoContraTodo(List<Partido> partidos){
+	public TorneoContraTodo(List<PartidoSimple> partidos){
 		this.partidos = partidos;
 	}
 	
-	@Override
-	public void jugarTorneo() {
-		for (Partido partido : this.partidos) {
-			this.resultados.add(partido.jugarYDevolverGanador());
-		}
+	public void armarPartidos(List<Equipo> equipos){
+		
 	}
-
-	public List<Partido> getPartidos() {
-		return partidos;
-	}
-
-	public void setPartidos(List<Partido> partidos) {
-		this.partidos = partidos;
-	}
-
-	public List<ResultadoDelPartido> getResultados() {
-		return resultados;
-	}
-
-	public void setResultados(List<ResultadoDelPartido> resultados) {
-		this.resultados = resultados;
-	}
-	
 	
 }

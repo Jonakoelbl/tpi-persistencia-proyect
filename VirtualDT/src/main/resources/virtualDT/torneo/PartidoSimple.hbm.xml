@@ -3,16 +3,16 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
         
-<!--        private PartidoSimple PartidoA, PartidoB; -->
+<!--         private Equipo equipoLocal, equipoVisitante; -->
         
 <hibernate-mapping>
-	<class name ="virtualDT.torneo.PartidoDeCopa" table="PARTIDOS_SIMPLES">
+	<class name ="virtualDT.torneo.PartidoSimple" table="PARTIDOS_SIMPLES">
 		<id name ="idP" type="java.lang.Integer">
 			<column name="ID_PARTIDO"></column>
 			<generator class="identity"></generator>
 		</id>
-		<property name="partidoA" column="Partido_A"/>
-		<property name="partidoB" column="Partido_B"/>
+		<property name="equipoLocal" column="Equipo_Local"/>
+		<property name="equipoVisitante" column="Equipo_Visitante"/>
 		
 	</class>
 </hibernate-mapping>

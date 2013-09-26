@@ -2,20 +2,20 @@ package virtualDT.torneo;
 
 import virtualDT.equipo.Partido;
 
-public class PartidoDeCopa {
-	private Partido PartidoA, PartidoB;
+public class PartidoDeCopa implements Partido<Resultado>{
+	private PartidoSimple partidoA, partidoB;
 	
-	public PartidoDeCopa(Partido partidoA, Partido partidoB) {
-		this.PartidoA = partidoA;
-		this.PartidoB = partidoB;
+	public PartidoDeCopa(PartidoSimple partidoA, PartidoSimple partidoB) {
+		this.partidoA = partidoA;
+		this.partidoB = partidoB;
 	}
 	
 	/**
 	 * Devuelve el ganador del partido
 	 */
 	public Resultado jugarPartido(){
-		ResultadoDelPartido resultadoPartidoA = this.PartidoA.jugarYDevolverGanador();
-		ResultadoDelPartido resultadoPartidoB = this.PartidoB.jugarYDevolverGanador();
+		ResultadoDelPartido resultadoPartidoA = this.partidoA.jugarPartido();
+		ResultadoDelPartido resultadoPartidoB = this.partidoB.jugarPartido();
 		
 		return this.resultadoDelPartido(resultadoPartidoA.getResultado(), resultadoPartidoB.getResultado());
 	}
