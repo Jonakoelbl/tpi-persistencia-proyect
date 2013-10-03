@@ -10,7 +10,7 @@ private Map<Posicion,Integer> puntajeSegunPosicion = new HashMap<Posicion, Integ
 	<typedef name="Posicion" class="org.hibernate.type.EnumType">
 		<param name="enumClass">virtualDT.equipo.Posicion</param>
 	</typedef>
-	<class name="virtualDT.equipo.Jugador" table="JUGADORES">
+	<class name="virtualDT.equipo.Jugador" table="Jugadores">
 		<id name="id" type="java.lang.Integer">
 			<column name="ID_JUGADOR" />
 			<generator class="identity" />

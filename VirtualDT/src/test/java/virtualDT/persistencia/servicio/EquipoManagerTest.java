@@ -118,4 +118,40 @@ public class EquipoManagerTest {
 
 	}
 
+	@Test
+	public void guardarFormacionActual() {
+		
+		equipo = new Equipo("Lambda");
+		Map<Jugador, Posicion> jcp = new HashMap<Jugador, Posicion>();
+		jcp.put(new Jugador("Pepito", 2, 4, 5, 7, 8, 3, 2), Posicion.ARQUERO);
+		jcp.put(new Jugador("Sultano", 4, 5, 3, 2, 7, 5, 8),
+				Posicion.CENTRODELANTERO);
+		jcp.put(new Jugador("Fulano", 3, 2, 2, 1, 6, 5, 9), Posicion.LATERAL);
+		jcp.put(new Jugador("Mengano", 2, 2, 5, 6, 7, 4, 2), Posicion.VOLANTE);
+		jcp.put(new Jugador("Cosme", 2, 3, 5, 3, 3, 1, 7),
+				Posicion.MEDIOCAMPISTA);
+
+		equipoManager.crear(equipo);
+
+		Formacion formacion = new Formacion(jcp);
+		
+		equipoManager.crear(equipo);
+		equipoManager.guardarFormacion("Lambda", formacion);
+		equipoManager.guardarFormacionActual("Lambda", formacion);
+		
+		SessionManager.runInSession(new Operation<Void>() {
+
+			public Void execute() {
+				Criteria criteria = SessionManager.getSession().createCriteria(
+						Equipo.class);
+				Equipo eq = (Equipo) criteria.add(
+						Restrictions.eq("nombreDelEquipo", "Lambda"))
+						.uniqueResult();
+				
+				assertEquals(eq.getNombreDelEquipo() , "Lambda");
+				return null;
+			}
+
+		});
+	}
 }

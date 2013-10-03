@@ -10,7 +10,7 @@
 -->
 
 <hibernate-mapping>
-	<class name="virtualDT.equipo.Equipo" table="EQUIPOS">
+	<class name="virtualDT.equipo.Equipo" table="Equipos">
 		<id name="id" type="java.lang.Integer">
 			<column name="ID_EQUIPO" />
 			<generator class="identity" />
@@ -19,11 +19,11 @@
 			<column name="NOMBRE_EQUIPO" />
 		</property>
 		<bag name="jugadores" cascade="all">
-			<key column = "JUGADORES" />
+			<key column = "ID_EQUIPO" />
 			<one-to-many class = "virtualDT.equipo.Jugador" />
 		</bag>
 		<bag name="formaciones" cascade = "all">
-			<key column = "FORMACIONES" />
+			<key column = "ID_EQUIPO" />
 			<one-to-many class = "virtualDT.equipo.Formacion"/>
 		</bag>
 		<many-to-one name="formacionActual" column="FORMACION_ACTUAL" cascade="all"></many-to-one>

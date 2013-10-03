@@ -6,13 +6,13 @@
 <!--         private Equipo equipoLocal, equipoVisitante; -->
         
 <hibernate-mapping>
-	<class name ="virtualDT.torneo.PartidoSimple" table="PARTIDOS_SIMPLES">
+	<class name ="virtualDT.torneo.PartidoSimple" table="PartidosSimples">
 		<id name ="idP" type="java.lang.Integer">
 			<column name="ID_PARTIDO"></column>
 			<generator class="identity"></generator>
 		</id>
-		<property name="equipoLocal" column="Equipo_Local"/>
-		<property name="equipoVisitante" column="Equipo_Visitante"/>
+		<many-to-one name="equipoLocal" column="Equipo_Local"/>
+		<many-to-one name="equipoVisitante" column="Equipo_Visitante"/>
 		
 	</class>
 </hibernate-mapping>
