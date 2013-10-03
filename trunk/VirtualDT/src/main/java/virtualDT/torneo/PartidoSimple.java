@@ -7,6 +7,7 @@ import virtualDT.equipo.Partido;
 
 public class PartidoSimple implements Partido<ResultadoDelPartido> {
 	private Equipo equipoLocal, equipoVisitante;
+	private int id;
 	
 	public PartidoSimple(){
 		//hibernate
@@ -33,14 +34,14 @@ public class PartidoSimple implements Partido<ResultadoDelPartido> {
 	public ResultadoDelPartido jugarPartido(){
 		if(this.leGano(this.equipoLocal.getFormacionActual(), this.equipoVisitante.getFormacionActual(),15)){
 			this.equipoLocal.sumarPuntuacion(3);
-			return new ResultadoDelPartido(this.equipoLocal.getNombreDelEquipo(), Resultado.LOCAL);
+			return new ResultadoDelPartido(this.equipoLocal, Resultado.LOCAL);
 		} else if (this.leGano(this.equipoVisitante.getFormacionActual(),this.equipoLocal.getFormacionActual(),20)){
 			this.equipoVisitante.sumarPuntuacion(3);
-			return new ResultadoDelPartido(this.equipoVisitante.getNombreDelEquipo(), Resultado.VISITANTE);
+			return new ResultadoDelPartido(this.equipoVisitante, Resultado.VISITANTE);
 		} else {
 			this.equipoLocal.sumarPuntuacion(1);
 			this.equipoVisitante.sumarPuntuacion(1);
-			return new ResultadoDelPartido("", Resultado.EMPATE);//No me gusta...
+			return new ResultadoDelPartido(null, Resultado.EMPATE);//No me gusta...
 		}
 	}
 
@@ -58,5 +59,13 @@ public class PartidoSimple implements Partido<ResultadoDelPartido> {
 
 	public void setEquipoVisitante(Equipo equipoVisitante) {
 		this.equipoVisitante = equipoVisitante;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}	
 }

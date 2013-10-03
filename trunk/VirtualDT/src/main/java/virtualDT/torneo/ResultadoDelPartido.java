@@ -1,22 +1,24 @@
 package virtualDT.torneo;
 
+import virtualDT.equipo.Equipo;
+
 public class ResultadoDelPartido implements TipoResultado {
 	private Resultado resultado;
-	private String equipoGanador;
+	private Equipo equipoGanador;
 	
 	public ResultadoDelPartido() {//Hibernate
 	}
 	
-	public ResultadoDelPartido(String equipoGanador, Resultado resultado){
+	public ResultadoDelPartido(Equipo equipoGanador, Resultado resultado){
 		this.equipoGanador = equipoGanador;
 		this.resultado = resultado;
 	}
 	
-	public String getEquipoGanador() {
+	public Equipo getEquipoGanador() {
 		return equipoGanador;
 	}
 
-	public void setEquipoGanador(String equipoGanador) {
+	public void setEquipoGanador(Equipo equipoGanador) {
 		this.equipoGanador = equipoGanador;
 	}
 

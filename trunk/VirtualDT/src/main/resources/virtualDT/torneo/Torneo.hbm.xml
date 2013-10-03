@@ -2,10 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-        
-        <!-- private List<Partido> partidos = new Vector<Partido>();
-	private List<ResultadoDelPartido> resultados= new Vector<ResultadoDelPartido>(); -->
-	
+
+<!-- 
+		private List<Partido> partidos = new Vector<Partido>(); private List<ResultadoDelPartido> 
+		resultados= new Vector<ResultadoDelPartido>(); 
+-->
+
 <hibernate-mapping>
 	<class name="virtualDT.torneo.Torneo" table="TORNEO">
 		<id name="idP" type="java.lang.Integer">
@@ -13,20 +15,32 @@
 			<generator class="identity"></generator>
 		</id>
 		<discriminator column="TipoDePartido" type="string" />
-		
-		<bag name="partidos" cascade="all">
-			<key column="partidos"/>
-			<one-to-many class="virtualDT.equipo.Partido" />
-		</bag>
-		<bag name="resultados" cascade="all">
-			<key column="resultados" />
-			<one-to-many class="virtualDT.equipo.Resultado" />
-		</bag>
 
 		<subclass name="virtualDT.torneo.TorneoDeCopa"
-			discriminator-value="TDC" />
+			discriminator-value="TDC">
+			<bag name="partidos" cascade="all">
+				<key column="id_Torneo" />
+				<one-to-many class="virtualDT.equipo.PartidoDeCopa" />
+			</bag>
+
+			<bag name="resultados" cascade="all">
+				<key column="id_Torneo" />
+				<one-to-many class="virtualDT.equipo.Resultado" />
+			</bag>
+		</subclass>
+
 		<subclass name="virtualDT.torneo.TorneoContraTodo"
-			discriminator-value="TCT" />
+			discriminator-value="TCT">
+			<bag name="partidos" cascade="all">
+				<key column="id_Torneo" />
+				<one-to-many class="virtualDT.equipo.PartidoSimple" />
+			</bag>
+
+			<bag name="resultados" cascade="all">
+				<key column="id_Torneo" />
+				<one-to-many class="virtualDT.equipo.ResultadoDelPartido" />
+			</bag>
+		</subclass>
 
 	</class>
 </hibernate-mapping>

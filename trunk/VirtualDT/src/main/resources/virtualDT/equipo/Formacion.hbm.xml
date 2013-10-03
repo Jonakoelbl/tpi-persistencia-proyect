@@ -10,14 +10,15 @@ Map<Jugador,Posicion> jugadoresConPosiciones= new HashMap<Jugador, Posicion>();
 	<typedef name="Posicion" class="org.hibernate.type.EnumType">
 		<param name="enumClass">virtualDT.equipo.Posicion</param>
 	</typedef>
-	<class name="virtualDT.equipo.Formacion" table="FORMACION">
+	<class name="virtualDT.equipo.Formacion" table="Formacion">
 		<id name="id" type="java.lang.Integer">
 			<column name="ID_FORMACION" />
 			<generator class="identity" />
 		</id>
 		<map name="jugadoresConPosiciones" cascade="all" table="jugadoresEnPosiciones">
-			<key column="ID_EQUIPO" />
-			<map-key-many-to-many class="virtualDT.equipo.Jugador"/>
+			<key column="ID_FORMACION"/>
+			
+			<map-key-many-to-many class="virtualDT.equipo.Jugador" column="ID_JUGADOR"/>
 			<element column="Posicion" type="Posicion" ></element>
 		</map>
 	</class>

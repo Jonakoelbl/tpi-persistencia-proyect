@@ -14,7 +14,7 @@ public class TorneoContraTodo extends Torneo<ResultadoDelPartido, PartidoSimple>
 	}
 	
 	public void armarPartidos(List<Equipo> equipos){
-		
+		//TODO armar partidos para los torneos de todos contra todos
 	}
 	
 }
