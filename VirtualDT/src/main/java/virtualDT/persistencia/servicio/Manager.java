@@ -16,7 +16,7 @@ public class Manager<T> implements ManagerDAO<T>{
 		this.criterio = criterio;
 	}
 	
-	public T consultar(final String consulta){
+	public T consultar(final Object consulta){
 		return SessionManager.runInSession(new Operation<T>() {
 
 			public T execute() {

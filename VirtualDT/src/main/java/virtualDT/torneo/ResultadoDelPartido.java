@@ -5,6 +5,7 @@ import virtualDT.equipo.Equipo;
 public class ResultadoDelPartido implements TipoResultado {
 	private Resultado resultado;
 	private Equipo equipoGanador;
+	private int id;
 	
 	public ResultadoDelPartido() {//Hibernate
 	}
@@ -28,6 +29,14 @@ public class ResultadoDelPartido implements TipoResultado {
 
 	public void setResultado(Resultado resultado) {
 		this.resultado = resultado;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

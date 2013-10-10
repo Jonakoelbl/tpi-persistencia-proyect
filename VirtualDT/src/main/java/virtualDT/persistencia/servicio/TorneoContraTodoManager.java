@@ -19,7 +19,7 @@ public class TorneoContraTodoManager extends TorneoManager<TorneoContraTodo>{
 			
 			public Void execute() {
 				
-				TorneoContraTodo tct = TorneoContraTodoManager.this.consultar(String.valueOf(id));
+				TorneoContraTodo tct = TorneoContraTodoManager.this.consultar(id);
 				tct.armarPartidos(equipos);
 				
 				return null;

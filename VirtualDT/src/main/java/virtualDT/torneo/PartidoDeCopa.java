@@ -42,10 +42,7 @@ public class PartidoDeCopa implements Partido<Resultado> {
 
 	protected Resultado pasarAPenales() {
 		int match = (int) Math.random();
-		if (match > 1)
-			return Resultado.LOCAL;
-		else
-			return Resultado.VISITANTE;
+		return (match > 1) ? Resultado.LOCAL : Resultado.VISITANTE;
 	}
 
 	public PartidoSimple getPartidoA() {

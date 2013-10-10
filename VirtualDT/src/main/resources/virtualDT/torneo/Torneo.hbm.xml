@@ -10,7 +10,7 @@
 
 <hibernate-mapping>
 	<class name="virtualDT.torneo.Torneo" table="TORNEO">
-		<id name="idP" type="java.lang.Integer">
+		<id name="id" type="java.lang.Integer">
 			<column name="ID_TORNEO"></column>
 			<generator class="identity"></generator>
 		</id>
@@ -20,12 +20,12 @@
 			discriminator-value="TDC">
 			<bag name="partidos" cascade="all">
 				<key column="id_Torneo" />
-				<one-to-many class="virtualDT.equipo.PartidoDeCopa" />
+				<one-to-many class="virtualDT.torneo.PartidoDeCopa" />
 			</bag>
-
+			
 			<bag name="resultados" cascade="all">
 				<key column="id_Torneo" />
-				<one-to-many class="virtualDT.equipo.Resultado" />
+				<element type="virtualDT.torneo.Resultado" />
 			</bag>
 		</subclass>
 
@@ -33,12 +33,12 @@
 			discriminator-value="TCT">
 			<bag name="partidos" cascade="all">
 				<key column="id_Torneo" />
-				<one-to-many class="virtualDT.equipo.PartidoSimple" />
+				<one-to-many class="virtualDT.torneo.PartidoSimple" />
 			</bag>
 
 			<bag name="resultados" cascade="all">
 				<key column="id_Torneo" />
-				<one-to-many class="virtualDT.equipo.ResultadoDelPartido" />
+				<one-to-many class="virtualDT.torneo.ResultadoDelPartido" />
 			</bag>
 		</subclass>
 
