@@ -20,6 +20,10 @@
     <mapping resource="virtualDT/equipo/Equipo.hbm.xml"></mapping>
     <mapping resource="virtualDT/equipo/Jugador.hbm.xml"></mapping>
     <mapping resource="virtualDT/equipo/Formacion.hbm.xml"></mapping>
+    <mapping resource="virtualDT/torneo/Torneo.hbm.xml"></mapping>
+    <mapping resource="virtualDT/torneo/ResultadoDelPartido.hbm.xml"></mapping>
+    <mapping resource="virtualDT/torneo/PartidoDeCopa.hbm.xml"></mapping>
+    <mapping resource="virtualDT/torneo/PartidoSimple.hbm.xml"></mapping>
 		
    </session-factory>
 </hibernate-configuration>

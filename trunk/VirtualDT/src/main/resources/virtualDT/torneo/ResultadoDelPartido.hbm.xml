@@ -9,16 +9,16 @@
 
 <hibernate-mapping>
 	<typedef name="Resultado" class="org.hibernate.type.EnumType">
-		<param name="enumClass">virtualDT.equipo.Resultado</param>
+		<param name="enumClass">virtualDT.torneo.Resultado</param>
 	</typedef>
-	<class name="virtualDT.equipo.ResultadoDelPartido" table="ResultadosDeLosPartidos">
+	<class name="virtualDT.torneo.ResultadoDelPartido" table="ResultadosDeLosPartidos">
 		<id name="id" type="java.lang.Integer">
 			<column name="ID_ResultadoDelPartido" />
 			<generator class="identity" />
 		</id>
 		
 		<property name="resultado" type="Resultado"/>
-		<many-to-one name="equipoGanador" class="virutalDT.equipo.Equipo"/>
+		<many-to-one name="equipoGanador" class="virtualDT.equipo.Equipo"/>
 		
 	</class>
 </hibernate-mapping>

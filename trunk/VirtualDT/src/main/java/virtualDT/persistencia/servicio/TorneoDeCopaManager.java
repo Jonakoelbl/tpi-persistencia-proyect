@@ -18,7 +18,7 @@ public class TorneoDeCopaManager extends TorneoManager<TorneoDeCopa> {
 
 			public Void execute() {
 
-				TorneoDeCopa tdc = TorneoDeCopaManager.this.consultar(String.valueOf(id));
+				TorneoDeCopa tdc = TorneoDeCopaManager.this.consultar(id);
 				tdc.armarPartidos(equipos);
 
 				return null;

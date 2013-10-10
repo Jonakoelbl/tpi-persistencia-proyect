@@ -9,6 +9,7 @@ import virtualDT.equipo.Partido;
 public abstract class Torneo<R extends TipoResultado, T extends Partido<R>> {
 	protected  List<T> partidos = new Vector<T>();
 	protected List<R> resultados = new Vector<R>();
+	protected int id;
 	
 	public void jugarTorneo() {
 		for (T partido : this.partidos) {
@@ -32,5 +33,13 @@ public abstract class Torneo<R extends TipoResultado, T extends Partido<R>> {
 
 	public void setResultados(List<R> resultados) {
 		this.resultados = resultados;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
