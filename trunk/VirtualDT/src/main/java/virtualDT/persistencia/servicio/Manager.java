@@ -1,5 +1,7 @@
 package virtualDT.persistencia.servicio;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -32,6 +34,19 @@ public class Manager<T> implements ManagerDAO<T>{
 
 			public Void execute() {
 				SessionManager.getSession().saveOrUpdate(obj);
+				return null;
+			}
+			
+		});
+	}
+	
+	public void crearTodo(final List<T> objs){
+		SessionManager.runInSession(new Operation<Void>(){
+
+			public Void execute() {
+				for (T t : objs) 
+					SessionManager.getSession().saveOrUpdate(t);
+				
 				return null;
 			}
 			

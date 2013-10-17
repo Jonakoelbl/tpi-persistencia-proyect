@@ -11,7 +11,7 @@
 			<column name="ID_PARTIDO"></column>
 			<generator class="identity"></generator>
 		</id>
-		<many-to-one name="partidoA" column="Partido_A" />
-		<many-to-one name="partidoB" column="Partido_B" />
+		<many-to-one name="partidoA" column="Partido_A" cascade="all"/>
+		<many-to-one name="partidoB" column="Partido_B" cascade="all"/>
 	</class>
 </hibernate-mapping>

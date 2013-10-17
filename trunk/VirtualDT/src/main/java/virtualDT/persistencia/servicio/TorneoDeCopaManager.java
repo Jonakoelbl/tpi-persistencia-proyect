@@ -4,6 +4,7 @@ import java.util.List;
 
 import virtualDT.equipo.Equipo;
 import virtualDT.persistencia.daos.SessionManager;
+import virtualDT.torneo.PartidoSimple;
 import virtualDT.torneo.TorneoDeCopa;
 
 public class TorneoDeCopaManager extends TorneoManager<TorneoDeCopa> {
@@ -20,7 +21,7 @@ public class TorneoDeCopaManager extends TorneoManager<TorneoDeCopa> {
 
 				TorneoDeCopa tdc = TorneoDeCopaManager.this.consultar(id);
 				tdc.armarPartidos(equipos);
-
+				
 				return null;
 			}
 		});

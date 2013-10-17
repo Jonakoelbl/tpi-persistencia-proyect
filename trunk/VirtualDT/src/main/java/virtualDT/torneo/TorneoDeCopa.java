@@ -1,5 +1,6 @@
 package virtualDT.torneo;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,11 +13,14 @@ public class TorneoDeCopa extends Torneo<Resultado, PartidoDeCopa> {
 	public void armarPartidos(List<Equipo> equipos) {
 		List<PartidoDeCopa> partidos = new Vector<PartidoDeCopa>();
 
-		List<Equipo> equiposParaArmar = new Vector<Equipo>(equipos);
-		for (Equipo equipo : equiposParaArmar) {
-			for (Equipo equipoA : equiposParaArmar) {
-				partidos.add(new PartidoDeCopa(new PartidoSimple(equipo,equipoA), 
-								new PartidoSimple(equipoA, equipo)));
+		Iterator<Equipo> equiposParaArmar = equipos.iterator();
+		while(equiposParaArmar.hasNext()) {
+			Equipo unirEquipo = equiposParaArmar.next();
+			Iterator<Equipo> equiposParaAsociar = equipos.iterator();
+			while(equiposParaAsociar.hasNext()){
+				Equipo equipo = equiposParaAsociar.next();
+				partidos.add(new PartidoDeCopa(new PartidoSimple(equipo,unirEquipo), 
+								new PartidoSimple(unirEquipo, equipo)));
 			}
 		}//TODO ver bien la idea...
 		
