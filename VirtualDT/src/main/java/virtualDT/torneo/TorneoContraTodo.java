@@ -1,8 +1,9 @@
 package virtualDT.torneo;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Queue;
 import java.util.Vector;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import virtualDT.equipo.Equipo;
 
@@ -17,14 +18,13 @@ public class TorneoContraTodo extends Torneo<ResultadoDelPartido, PartidoSimple>
 	public void armarPartidos(List<Equipo> equipos){
 		List<PartidoSimple> partidos = new Vector<PartidoSimple>();
 		
-		Iterator<Equipo> equiposParaRecorrer = equipos.iterator() ;
-		while (equiposParaRecorrer.hasNext()) {
-			Equipo equipoA = (Equipo) equiposParaRecorrer.next();
-			Iterator<Equipo> equiposAJugar = equiposParaRecorrer;
+		Queue<Equipo> equiposParaArmar = new ArrayBlockingQueue<Equipo>(equipos.size());
+		equiposParaArmar.addAll(equipos);
+		while (!equiposParaArmar.isEmpty()) {
+			Equipo unirEquipo = equiposParaArmar.poll();
 			
-			while(equiposAJugar.hasNext()){
-				Equipo equipoB = (Equipo) equiposAJugar.next();
-				partidos.add(new PartidoSimple(equipoA, equipoB));
+			for (Equipo equipo : equiposParaArmar) {
+				partidos.add(new PartidoSimple(unirEquipo, equipo));
 			}
 		}
 		this.partidos = partidos;

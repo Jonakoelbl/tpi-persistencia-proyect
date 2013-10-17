@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import virtualDT.equipo.Equipo;
 import virtualDT.equipo.Jugador;
+import virtualDT.persistencia.servicio.EquipoManager;
 import virtualDT.persistencia.servicio.TorneoContraTodoManager;
 import virtualDT.persistencia.servicio.TorneoDeCopaManager;
 
@@ -38,13 +39,35 @@ public class TorneoTest {
 		equiposA.add(new Equipo("Gnum8085", jugadoresE));
 
 		TorneoContraTodo torneoCT = new TorneoContraTodo();
-		
+
 		TorneoDeCopa torneoDC = new TorneoDeCopa();
-		
+
+		EquipoManager equipoManager = new EquipoManager();
+
+		equipoManager.crearTodo(equiposA);
+
 		tct.crear(torneoCT);
 		tdc.crear(torneoDC);
+
+		tct.armarPartidos(equiposA, torneoCT.getId());
+		tdc.armarPartidos(equiposA, torneoDC.getId());
 		
-		//tct.armarPartidos(equiposA, torneoCT.getId());
-		//tdc.armarPartidos(equiposA, 1);
 	}
+
+	@Test
+	public void armarPartidosLogica() {
+		equiposA.add(new Equipo("Lambda", jugadoresA));
+		equiposA.add(new Equipo("Complemento a 2", jugadoresB));
+		equiposA.add(new Equipo("Monadas", jugadoresC));
+		equiposA.add(new Equipo("Gnum8085", jugadoresE));
+
+		TorneoContraTodo torneoCT = new TorneoContraTodo();
+		torneoCT.armarPartidos(equiposA);
+		assertEquals(6, torneoCT.getPartidos().size());
+
+		TorneoDeCopa torneoDeCopa = new TorneoDeCopa();
+		torneoDeCopa.armarPartidos(equiposA);
+		assertEquals(16, torneoDeCopa.getPartidos().size());
+	}
+
 }

@@ -11,8 +11,8 @@
 			<column name="ID_PARTIDO"></column>
 			<generator class="identity"></generator>
 		</id>
-		<many-to-one name="equipoLocal" column="Equipo_Local"/>
-		<many-to-one name="equipoVisitante" column="Equipo_Visitante"/>
+		<many-to-one name="equipoLocal" column="Equipo_Local" cascade="all"/>
+		<many-to-one name="equipoVisitante" column="Equipo_Visitante" cascade="all"/>
 		
 	</class>
 </hibernate-mapping>
