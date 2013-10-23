@@ -5,7 +5,6 @@ import virtualDT.equipo.Jugador;
 public class JugadorManager extends Manager<Jugador>{
 
 	public JugadorManager() {
-		super(Jugador.class, "");
+		super(Jugador.class, "nombre");
 	}
-
 }

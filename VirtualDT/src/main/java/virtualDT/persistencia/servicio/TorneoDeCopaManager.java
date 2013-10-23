@@ -26,6 +26,20 @@ public class TorneoDeCopaManager extends TorneoManager<TorneoDeCopa> {
 			}
 		});
 	}
+
+	@Override
+	public void jugarTorneo(final int idTorneo) {
+		SessionManager.runInSession(new Operation<Void>() {
+
+			public Void execute() {
+				TorneoDeCopa tdc = TorneoDeCopaManager.this.consultar(idTorneo);
+				tdc.jugarTorneo();
+				
+				return null;
+			}
+			
+		});
+	}
 	
 	
 }

@@ -18,7 +18,6 @@ public class TorneoContraTodoManager extends TorneoManager<TorneoContraTodo>{
 		SessionManager.runInSession(new Operation<Void>() {
 			
 			public Void execute() {
-				
 				TorneoContraTodo tct = TorneoContraTodoManager.this.consultar(id);
 				tct.armarPartidos(equipos);
 				
@@ -26,5 +25,18 @@ public class TorneoContraTodoManager extends TorneoManager<TorneoContraTodo>{
 			}
 		});
 		
+	}
+
+	@Override
+	public void jugarTorneo(final int idTorneo) {
+		SessionManager.runInSession(new Operation<Void>() {
+
+			public Void execute() {
+				TorneoContraTodo tct = TorneoContraTodoManager.this.consultar(idTorneo);
+				tct.jugarTorneo();
+				
+				return null;
+			}
+		});
 	}
 }
