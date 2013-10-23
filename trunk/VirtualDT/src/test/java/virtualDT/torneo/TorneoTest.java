@@ -51,9 +51,12 @@ public class TorneoTest {
 
 		tct.armarPartidos(equiposA, torneoCT.getId());
 		tdc.armarPartidos(equiposA, torneoDC.getId());
-		
-	}
 
+		TorneoContraTodo t = tct.consultar(torneoCT.getId());
+		
+		assertEquals(6, t.getPartidos().size());
+	}
+	
 	@Test
 	public void armarPartidosLogica() {
 		equiposA.add(new Equipo("Lambda", jugadoresA));
@@ -70,4 +73,17 @@ public class TorneoTest {
 		assertEquals(16, torneoDeCopa.getPartidos().size());
 	}
 
+	@Test
+	public void jugarTorneos(){
+		fail("implement yet");
+//		equiposA.add(new Equipo("Lambda", jugadoresA));
+//		equiposA.add(new Equipo("Complemento a 2", jugadoresB));
+//		equiposA.add(new Equipo("Monadas", jugadoresC));
+//		equiposA.add(new Equipo("Gnum8085", jugadoresE));
+//		
+//		
+//		TorneoContraTodo torneoCT = new TorneoContraTodo();
+//		
+//		torneoCT.armarPartidos(equiposA);
+	}
 }
